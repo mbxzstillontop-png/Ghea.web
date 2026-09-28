@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#08090b">
+<meta name="description" content="Official GHEA website.">
+<title>GHEA — Official</title>
+<link id="favicon" rel="icon" href="">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap');
+:root{--bg:#08090b;--surface:#0e1013;--surface2:#121418;--text:#f4f4f0;--muted:#8e939b;--line:#24272c;--soft:#c5c8cd;--max:1180px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Manrope,system-ui,sans-serif;overflow-x:hidden}.noise{position:fixed;inset:0;pointer-events:none;opacity:.035;z-index:99;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}a{text-decoration:none;color:inherit}button{font:inherit}
+.garden-bg{position:fixed;inset:0;z-index:-5;background-image:linear-gradient(rgba(8,9,11,.38),rgba(8,9,11,.58)),var(--garden-image);background-size:cover;background-position:center;background-attachment:fixed;filter:blur(var(--garden-blur));transform:scale(1.035);transition:background-image .4s ease}
+.garden-bg:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 35%,rgba(255,210,230,.13),transparent 35%),linear-gradient(180deg,rgba(8,9,11,.08),rgba(8,9,11,.72))}
+.particles{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.particle{position:absolute;width:var(--size);height:var(--size);border-radius:50%;background:rgba(255,205,225,var(--alpha));box-shadow:0 0 12px rgba(255,190,220,.35);animation:float var(--duration) linear infinite;left:var(--left);top:var(--top)}
+.particle.petal{width:9px;height:5px;border-radius:100% 0 100% 0;transform:rotate(var(--rotate));background:rgba(255,190,220,.55);box-shadow:0 0 10px rgba(255,160,205,.25);animation-name:petalFloat}
+@keyframes float{0%{transform:translate3d(0,18vh,0) scale(.5);opacity:0}15%{opacity:var(--alpha)}75%{opacity:var(--alpha)}100%{transform:translate3d(var(--drift),-115vh,0) scale(1.1);opacity:0}}
+@keyframes petalFloat{0%{transform:translate3d(0,15vh,0) rotate(var(--rotate));opacity:0}15%{opacity:.8}50%{transform:translate3d(var(--drift),-45vh,0) rotate(calc(var(--rotate) + 160deg))}100%{transform:translate3d(calc(var(--drift) * -1),-115vh,0) rotate(calc(var(--rotate) + 330deg));opacity:0}}
+
+#loader{position:fixed;z-index:200;inset:0;background:#08090b;display:grid;place-items:center;align-content:center;gap:15px;transition:.7s}.loader-logo{font-size:45px;font-weight:800;letter-spacing:.18em}.loader-bar{width:180px;height:1px;background:#24272c}.loader-bar i{display:block;width:0;height:100%;background:#fff;animation:load 1.25s ease forwards}.loader-bar+span{font:10px "DM Mono";letter-spacing:.18em;color:#666}@keyframes load{to{width:100%}}#loader.done{opacity:0;pointer-events:none}
+header{position:fixed;z-index:50;top:0;left:0;right:0;height:76px;padding:0 max(24px,calc((100vw - 1180px)/2));display:flex;align-items:center;border-bottom:1px solid rgba(255,255,255,.06);background:rgba(8,9,11,.72);backdrop-filter:blur(18px)}.brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:.1em}.brand img{width:30px;height:30px;object-fit:contain;border-radius:8px}.brand img[src=""],.hero-logo img[src=""]{visibility:hidden}nav{margin-left:auto;display:flex;gap:32px}nav a{font-size:12px;color:#92969c;transition:.2s}nav a:hover{color:#fff}.nav-actions{display:flex;gap:8px;margin-left:28px}.nav-actions button{width:35px;height:35px;border:1px solid var(--line);background:#0f1114;color:#ddd;border-radius:9px;cursor:pointer}.hamb{display:none}
+.hero{min-height:100vh;background:linear-gradient(180deg,rgba(8,9,11,.06),rgba(8,9,11,.18));position:relative;display:grid;place-items:center;overflow:hidden;text-align:center}.hero-copy{position:relative;z-index:2;padding-top:60px}.status{display:inline-flex;align-items:center;gap:8px;padding:7px 11px;border:1px solid var(--line);border-radius:99px;color:#9da1a7;font:10px "DM Mono";letter-spacing:.08em}.status i{width:5px;height:5px;border-radius:50%;background:#d7d7d2;box-shadow:0 0 12px #fff}.status b{color:#fff;font-weight:500}.hero-logo{width:86px;height:86px;margin:28px auto 24px;padding:13px;border:1px solid var(--line);border-radius:23px;background:rgba(20,22,26,.8)}.hero-logo img{width:100%;height:100%;object-fit:contain;border-radius:13px}.kicker,.label{font:10px "DM Mono";letter-spacing:.18em;color:#73777d}.hero h1{font-size:clamp(58px,9vw,120px);line-height:.91;letter-spacing:-.07em;margin:16px 0 25px;font-weight:800}.hero h1 em,h2 em{font-style:normal;color:#858a91}.hero-desc{max-width:570px;color:var(--muted);margin:0 auto 30px;font-size:15px}.hero-actions{display:flex;justify-content:center;align-items:center;gap:24px}.btn{display:inline-flex;gap:22px;align-items:center;padding:13px 18px;border:1px solid var(--line);border-radius:9px;font-size:12px;font-weight:700;transition:.25s}.btn:hover{transform:translateY(-2px)}.btn.light{background:#f1f1ee;color:#08090b;border-color:#f1f1ee}.text-btn{font-size:12px;color:#888d94}.text-btn span{margin-left:8px}.scroll{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);font:9px "DM Mono";letter-spacing:.18em;color:#555}.scroll i{display:block;width:1px;height:28px;background:#444;margin:9px auto 0}.orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:.18}.orb-a{width:480px;height:480px;background:#777;left:-230px;top:25%}.orb-b{width:400px;height:400px;background:#444;right:-200px;bottom:10%}
+.section{max-width:var(--max);margin:auto;padding:145px 24px}.about{border-top:1px solid var(--line)}.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:100px;margin-top:45px}.section h2{font-size:clamp(42px,6vw,72px);line-height:.98;letter-spacing:-.055em;margin:0}.about-text{max-width:560px}.about-text p{color:var(--muted);font-size:15px;margin:0 0 22px}.section-title{margin:22px 0 52px}.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}.feature{min-height:270px;padding:28px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(14,16,19,.4);transition:.25s}.feature:hover{background:#111318}.feature>span{font:10px "DM Mono";color:#555}.icon{font-size:23px;color:#c8c9c7;margin:40px 0 17px}.feature h3{font-size:17px;margin:0 0 8px}.feature p{font-size:12px;line-height:1.7;color:var(--muted);max-width:270px}.system{border-top:1px solid var(--line)}.system-head{display:grid;grid-template-columns:1.2fr .8fr;gap:80px;margin:25px 0 70px}.system-head p{color:var(--muted);max-width:380px;font-size:14px}.system-lines{border-top:1px solid var(--line)}.line{display:grid;grid-template-columns:70px 1fr 220px;padding:24px 0;border-bottom:1px solid var(--line);align-items:center}.line b{font:10px "DM Mono";color:#555}.line strong{font-size:14px}.line span{font-size:11px;color:#73777d}.download{padding:150px 24px;background:#f0f0ed;color:#08090b}.download-inner{max-width:1180px;margin:auto}.download .label{color:#777}.download h2{font-size:clamp(55px,9vw,110px);line-height:.9;letter-spacing:-.07em;margin:20px 0}.download h2 em{color:#888}.download p{color:#6c7074;font-size:14px;margin-bottom:30px}.download .btn{margin-top:10px}.download small{display:block;font:9px "DM Mono";color:#777;margin-top:14px}footer{max-width:var(--max);margin:auto;padding:30px 24px;display:flex;justify-content:space-between;color:#676b71;font-size:11px}footer strong{color:#eee;letter-spacing:.1em}footer p{margin:0}.reveal{opacity:0;transform:translateY(22px);transition:.8s ease}.reveal.show{opacity:1;transform:none}
+@media(max-width:760px){header{height:64px;padding:0 18px}.hamb{display:block}nav{display:none;position:absolute;top:70px;left:12px;right:12px;padding:8px;background:#111318;border:1px solid var(--line);border-radius:12px;flex-direction:column;gap:0}nav.open{display:flex}nav a{padding:13px}.nav-actions{margin-left:auto}.hero{padding:0 20px}.hero h1{font-size:62px}.hero-desc{font-size:13px}.hero-actions{flex-direction:column;gap:16px}.section{padding:100px 20px}.about-grid,.system-head{grid-template-columns:1fr;gap:35px}.feature-grid{grid-template-columns:1fr}.feature{min-height:230px}.line{grid-template-columns:45px 1fr}.line span{display:none}.download{padding:100px 20px}footer{padding:25px 20px;display:block}footer p{margin-top:10px}}
+
+@media(prefers-reduced-motion:reduce){.particle{animation:none}.reveal{transition:none}}
+
+.developer-link{color:#f0b7cf!important;border-bottom:1px solid rgba(240,183,207,.35);padding-bottom:2px}
+.download-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.developer-btn{display:inline-flex;align-items:center;gap:18px;padding:13px 18px;border:1px solid #bfc1c0;border-radius:9px;color:#242528;background:transparent;font-size:12px;font-weight:700;transition:.25s}
+.developer-btn:hover{transform:translateY(-2px);background:#e4e4e1}
+@media(max-width:760px){.download-actions{width:100%;flex-direction:column;align-items:flex-start}.developer-btn,.download-actions .btn{width:100%;justify-content:space-between}.developer-link{border-bottom:0}}
+
+</style>
+</head>
+<body>
+<div id="gardenBg" class="garden-bg"></div>
+<div id="particles" class="particles" aria-hidden="true"></div>
+<div class="noise"></div>
+<div id="loader"><div class="loader-logo">GHEA</div><div class="loader-bar"><i></i></div><span>INITIALIZING</span></div>
+
+<header>
+  <a href="#home" class="brand"><img id="navLogo"><span>GHEA</span></a>
+  <nav id="nav">
+    <a href="#about">About</a><a href="#features">Features</a><a href="#system">System</a><a href="#download">Download</a><a id="developerLink" class="developer-link" target="_blank" rel="noopener">Developer ↗</a>
+  </nav>
+  <div class="nav-actions"><button id="sound" title="Sound">◉</button><button id="menu" class="hamb">☰</button></div>
+</header>
+
+<main>
+<section id="home" class="hero">
+  <div class="orb orb-a"></div><div class="orb orb-b"></div>
+  <div class="hero-copy reveal">
+    <div class="status"><i></i> GHEA <b id="version">V1</b></div>
+    <div class="hero-logo"><img id="heroLogo"></div>
+    <p class="kicker">THE GHEA EXPERIENCE</p>
+    <h1>Simple.<br><em>Distinctive.</em><br>GHEA.</h1>
+    <p class="hero-desc" id="description"></p>
+    <div class="hero-actions"><a class="btn light" href="#download">Get GHEA <span>↗</span></a><a class="text-btn" href="#features">Explore the system <span>↓</span></a></div>
+  </div>
+  <div class="scroll">SCROLL <i></i></div>
+</section>
+
+<section id="about" class="section about">
+  <div class="label reveal">01 — ABOUT GHEA</div>
+  <div class="about-grid">
+    <div class="reveal"><h2>Built around a<br><em>better experience.</em></h2></div>
+    <div class="about-text reveal"><p>GHEA adalah WhatsApp bot dengan konsep modern dan terstruktur. Fokusnya bukan sekadar banyak command, tetapi bagaimana sebuah sistem terasa rapi, mudah digunakan, dan tetap siap dikembangkan.</p><p>Website ini menjadi ruang resmi untuk mengenal GHEA, melihat kemampuan utamanya, dan mendapatkan script GHEA.</p></div>
+  </div>
+</section>
+
+<section id="features" class="section">
+  <div class="label reveal">02 — FEATURES</div>
+  <div class="section-title reveal"><h2>Everything you need.<br><em>Nothing unnecessary.</em></h2></div>
+  <div class="feature-grid">
+    <article class="feature reveal"><span>01</span><div class="icon">✦</div><h3>Multi Device</h3><p>Pengalaman bot yang dirancang untuk ekosistem WhatsApp Multi Device.</p></article>
+    <article class="feature reveal"><span>02</span><div class="icon">⌁</div><h3>Command System</h3><p>Struktur command yang terorganisir untuk penggunaan yang lebih nyaman.</p></article>
+    <article class="feature reveal"><span>03</span><div class="icon">◈</div><h3>Flexible</h3><p>Konsep yang mudah diperluas sesuai kebutuhan dan arah project.</p></article>
+    <article class="feature reveal"><span>04</span><div class="icon">↗</div><h3>API Ready</h3><p>Dapat dikembangkan untuk terhubung dengan layanan API eksternal.</p></article>
+    <article class="feature reveal"><span>05</span><div class="icon">⌘</div><h3>Developer Friendly</h3><p>Pengaturan dan sistem dibuat dengan pendekatan yang mudah dipahami.</p></article>
+    <article class="feature reveal"><span>06</span><div class="icon">∞</div><h3>Expandable</h3><p>GHEA dapat terus berkembang dengan fitur dan sistem baru.</p></article>
+  </div>
+</section>
+
+<section id="system" class="section system">
+  <div class="label reveal">03 — SYSTEM</div>
+  <div class="system-head reveal"><h2>Under the surface,<br><em>there's a system.</em></h2><p>GHEA dibangun dengan pola yang memungkinkan setiap bagian dikembangkan tanpa mengorbankan pengalaman pengguna.</p></div>
+  <div class="system-lines">
+    <div class="line reveal"><b>01</b><strong>Configuration</strong><span>Centralized & adjustable</span></div>
+    <div class="line reveal"><b>02</b><strong>Command Architecture</strong><span>Organized & expandable</span></div>
+    <div class="line reveal"><b>03</b><strong>External Services</strong><span>Ready for integrations</span></div>
+    <div class="line reveal"><b>04</b><strong>Branding</strong><span>Fully customizable</span></div>
+  </div>
+</section>
+
+<section id="download" class="download">
+  <div class="download-inner reveal">
+    <div class="label">04 — GET GHEA</div>
+    <h2>Ready to meet<br><em>GHEA?</em></h2>
+    <p>Download script GHEA dan mulai project kamu.</p>
+    <div class="download-actions">
+      <a id="downloadBtn" class="btn light big" target="_blank" rel="noopener">Download GHEA <span>↗</span></a>
+      <a id="developerBtn" class="developer-btn" target="_blank" rel="noopener">Developer <span>↗</span></a>
+    </div>
+    <small id="filename"></small>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div><strong>GHEA</strong><span> by AlwaysLennz</span></div>
+  <p id="copyright"></p>
+</footer>
+<audio id="audio" preload="none"></audio>
+<script>
+window.GHEA_CONFIG = {
+  site: {
+    name: "GHEA",
+    version: "V1",
+    tagline: "A refined WhatsApp bot experience.",
+    description: "GHEA hadir dengan pendekatan yang clean, modern, dan fleksibel — dibuat untuk pengalaman bot yang lebih terstruktur."
+  },
+  branding: {
+    heroLogo: "https://cdn.zass.in/EiVlcXdD0v.jpeg",
+    navLogo: "https://cdn.zass.in/QT70bNOasp.jpeg",
+    favicon: "https://cdn.zass.in/0fLF5APbvZ.jpeg"
+  },
+
+  background: {
+    imageUrl: "https://cdn.zass.in/idvU2RPnJO.jpeg",
+    overlayOpacity: 0.38,
+    blur: 0.4
+  },
+  audio: {
+    enabled: true,
+    url: "https://cdn.zass.in/NsjXKKddeR.mpeg",
+    volume: 0.45
+  },
+  download: {
+    url: "",
+    filename: "GHEA-V1.zip"
+  },
+  developer: {
+    name: "AlwaysLennz",
+    url: "https://wa.me/6285129673931",
+    copyright: "© 2026 LENNZ Project. All Rights Reserved."
+  }
+};
+
+
+const $=s=>document.querySelector(s);
+function image(id,url){const e=$(id);if(!e)return;if(url&&!url.startsWith("URL_"))e.src=url;else e.removeAttribute("src")}
+window.addEventListener("DOMContentLoaded",()=>{
+
+  const bg = $("#gardenBg");
+  if (bg && GHEA_CONFIG.background?.imageUrl && !GHEA_CONFIG.background.imageUrl.startsWith("URL_")) {
+    bg.style.setProperty("--garden-image", `url("${GHEA_CONFIG.background.imageUrl}")`);
+    bg.style.setProperty("--garden-blur", `${GHEA_CONFIG.background.blur ?? 0}px`);
+    bg.style.setProperty("--garden-opacity", `${GHEA_CONFIG.background.overlayOpacity ?? 0.38}`);
+  } else if (bg) {
+    bg.style.setProperty("--garden-image", "none");
+  }
+
+  const particleLayer = $("#particles");
+  if (particleLayer) {
+    const count = window.innerWidth < 700 ? 24 : 42;
+    for (let i = 0; i < count; i++) {
+      const p = document.createElement("span");
+      p.className = "particle" + (Math.random() > 0.72 ? " petal" : "");
+      p.style.setProperty("--size", `${Math.random() * 4 + 2}px`);
+      p.style.setProperty("--alpha", `${Math.random() * 0.45 + 0.25}`);
+      p.style.setProperty("--left", `${Math.random() * 100}%`);
+      p.style.setProperty("--top", `${Math.random() * 110}%`);
+      p.style.setProperty("--duration", `${Math.random() * 13 + 10}s`);
+      p.style.setProperty("--drift", `${(Math.random() * 180 - 90).toFixed(0)}px`);
+      p.style.setProperty("--rotate", `${Math.random() * 360}deg`);
+      p.style.animationDelay = `${-Math.random() * 18}s`;
+      particleLayer.appendChild(p);
+    }
+  }
+
+  $("#version").textContent=GHEA_CONFIG.site.version;
+  $("#description").textContent=GHEA_CONFIG.site.description;
+  $("#copyright").textContent=GHEA_CONFIG.developer.copyright;
+  image("#navLogo",GHEA_CONFIG.branding.logo);image("#heroLogo",GHEA_CONFIG.branding.logo);
+  if(GHEA_CONFIG.branding.favicon&&!GHEA_CONFIG.branding.favicon.startsWith("URL_"))$("#favicon").href=GHEA_CONFIG.branding.favicon;
+  $("#downloadBtn").href=GHEA_CONFIG.download.url;
+  $("#filename").textContent=GHEA_CONFIG.download.filename;
+  const devUrl=GHEA_CONFIG.developer.url;
+  const devBtn=$("#developerBtn"),devLink=$("#developerLink");
+  if(devUrl&&!devUrl.startsWith("URL_")){
+    devBtn.href=devUrl; devLink.href=devUrl;
+  }else{
+    devBtn.href="#"; devLink.href="#";
+    devBtn.addEventListener("click",e=>e.preventDefault());
+    devLink.addEventListener("click",e=>e.preventDefault());
+  }
+  const audio=$("#audio"),sound=$("#sound");
+  if(GHEA_CONFIG.audio.enabled&&GHEA_CONFIG.audio.url&&!GHEA_CONFIG.audio.url.startsWith("URL_")){
+    audio.src=GHEA_CONFIG.audio.url;audio.volume=GHEA_CONFIG.audio.volume;
+    sound.onclick=async()=>{if(audio.paused){try{await audio.play();sound.textContent="◉"}catch{}}else{audio.pause();sound.textContent="○"}};
+  }else sound.style.opacity=".35";
+  $("#menu").onclick=()=>$("#nav").classList.toggle("open");
+  document.querySelectorAll("nav a").forEach(a=>a.onclick=()=>$("#nav").classList.remove("open"));
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add("show")}),{threshold:.12});
+  document.querySelectorAll(".reveal").forEach(e=>io.observe(e));
+  setTimeout(()=>$("#loader").classList.add("done"),1450);
+});
+</script>
+</body></html>
