@@ -16,7 +16,7 @@ a{text-decoration:none;color:inherit}button{font:inherit}
 .noise{position:fixed;inset:0;pointer-events:none;opacity:.025;z-index:99;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 .particles{position:fixed;inset:0;z-index:-2;pointer-events:none;overflow:hidden}.particle{position:absolute;width:var(--size);height:var(--size);border-radius:50%;background:rgba(255,210,230,var(--alpha));box-shadow:0 0 18px rgba(255,170,210,.45);animation:float var(--duration) linear infinite;left:var(--left);top:var(--top)}.particle.petal{width:10px;height:6px;border-radius:100% 0 100% 0;transform:rotate(var(--rotate));background:rgba(255,188,216,.62);animation-name:petalFloat}@keyframes float{0%{transform:translate3d(0,18vh,0) scale(.4);opacity:0}12%{opacity:var(--alpha)}80%{opacity:var(--alpha)}100%{transform:translate3d(var(--drift),-115vh,0) scale(1.1);opacity:0}}@keyframes petalFloat{0%{transform:translate3d(0,15vh,0) rotate(var(--rotate));opacity:0}15%{opacity:.75}50%{transform:translate3d(var(--drift),-45vh,0) rotate(calc(var(--rotate) + 160deg))}100%{transform:translate3d(calc(var(--drift) * -1),-115vh,0) rotate(calc(var(--rotate) + 330deg));opacity:0}}
 .cursor-glow{position:fixed;width:280px;height:280px;border-radius:50%;pointer-events:none;z-index:0;background:radial-gradient(circle,rgba(255,170,210,.12),transparent 68%);transform:translate(-50%,-50%);opacity:.65;transition:opacity .3s}
-#loader{position:fixed;z-index:200;inset:0;background:#09090b;display:grid;place-items:center;align-content:center;gap:13px;transition:opacity .8s,visibility .8s}#loader.done{opacity:0;visibility:hidden;pointer-events:none}.loader-mark{width:70px;height:70px;border:1px solid rgba(255,210,230,.35);border-radius:20px;display:grid;place-items:center;position:relative;animation:loaderPulse 1.8s ease-in-out infinite}.loader-mark span{font-size:32px;font-weight:800;background:linear-gradient(135deg,#fff,#f2a6c5);-webkit-background-clip:text;color:transparent}.loader-mark i{position:absolute;inset:-7px;border:1px solid rgba(255,190,215,.12);border-radius:25px;animation:spin 5s linear infinite}.loader-word{font-size:15px;letter-spacing:.35em;font-weight:800}.loader-word b{color:var(--pink)}.loader-bar{width:190px;height:2px;background:#25242a;overflow:hidden}.loader-bar i{display:block;width:0;height:100%;background:linear-gradient(90deg,#fff,var(--pink));animation:load 1.5s ease forwards}.loader-mark+ .loader-word{}.loader-word+ .loader-bar{}#loader>span{font:10px "DM Mono",monospace;color:#777;letter-spacing:.2em}@keyframes load{to{width:100%}}@keyframes loaderPulse{50%{transform:scale(1.06);box-shadow:0 0 35px rgba(255,180,210,.13)}}@keyframes spin{to{transform:rotate(360deg)}}
+}
 header{position:fixed;z-index:80;top:0;left:0;right:0;height:78px;padding:0 34px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.09);background:rgba(8,8,11,.36);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);transition:.35s}
 header.scrolled{background:rgba(8,8,11,.76);height:70px;box-shadow:0 15px 40px rgba(0,0,0,.18)}
 .brand{display:flex;align-items:baseline;gap:7px;font-size:18px;letter-spacing:.15em;font-weight:800}.brand-main{color:#fff}.brand-accent{color:var(--pink);font-size:11px;letter-spacing:.23em;position:relative}.brand-accent:after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:1px;background:linear-gradient(90deg,var(--pink),transparent);animation:lineGlow 2s infinite}@keyframes lineGlow{50%{opacity:.25;transform:scaleX(.55)}}
@@ -48,14 +48,6 @@ footer{padding:30px max(34px,calc((100vw - var(--max))/2));display:flex;align-it
 <div id="particles" class="particles" aria-hidden="true"></div>
 <div class="cursor-glow"></div>
 <div class="noise"></div>
-
-<div id="loader">
-  <div class="loader-mark"><span>W</span><i></i></div>
-  <div class="loader-word">WELCOME TO <b>GHEA WEB</b></div>
-  <div class="loader-bar"><i></i></div>
-  <span>WELCOME TO GHEA WEB • LOADING EXPERIENCE</span>
-</div>
-
 <header id="topbar">
   <a href="#home" class="brand" aria-label="GHEA INFO home">
     <span class="brand-main">GHEA</span><span class="brand-accent">INFO</span>
@@ -280,9 +272,6 @@ window.addEventListener("DOMContentLoaded",()=>{
 
   const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add("show")}),{threshold:.12});
   document.querySelectorAll(".reveal").forEach(e=>io.observe(e));
-  const finishLoader=()=>{const l=$("#loader");if(l)l.classList.add("done")};
-  requestAnimationFrame(()=>setTimeout(finishLoader,1450));
-  window.addEventListener("load",()=>setTimeout(finishLoader,250),{once:true});
 });
 </script>
 </body></html>
