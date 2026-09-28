@@ -250,7 +250,6 @@ window.addEventListener("DOMContentLoaded",()=>{
   window.addEventListener("scroll",onScroll,{passive:true}); onScroll();
 
   const soundBtn=$("#sound");
-  const audio=$("#audio");
   if(audio && soundBtn){
     audio.addEventListener("play",()=>soundBtn.classList.add("playing"));
     audio.addEventListener("pause",()=>soundBtn.classList.remove("playing"));
@@ -270,7 +269,7 @@ window.addEventListener("DOMContentLoaded",()=>{
     },{passive:true});
   }
 
-  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add("show")}),{threshold:.12});
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add("visible")}),{threshold:.12});
   document.querySelectorAll(".reveal").forEach(e=>io.observe(e));
 });
 </script>
