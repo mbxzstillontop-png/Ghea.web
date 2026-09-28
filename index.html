@@ -5,103 +5,151 @@
 <meta name="theme-color" content="#08090b">
 <meta name="description" content="Official GHEA website.">
 <title>GHEA — Official</title>
-<link id="favicon" rel="icon" href="">
-<style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap');
-:root{--bg:#08090b;--surface:#0e1013;--surface2:#121418;--text:#f4f4f0;--muted:#8e939b;--line:#24272c;--soft:#c5c8cd;--max:1180px}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Manrope,system-ui,sans-serif;overflow-x:hidden}.noise{position:fixed;inset:0;pointer-events:none;opacity:.035;z-index:99;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}a{text-decoration:none;color:inherit}button{font:inherit}
-.garden-bg{position:fixed;inset:0;z-index:-5;background-image:linear-gradient(rgba(8,9,11,.38),rgba(8,9,11,.58)),var(--garden-image);background-size:cover;background-position:center;background-attachment:fixed;filter:blur(var(--garden-blur));transform:scale(1.035);transition:background-image .4s ease}
-.garden-bg:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 35%,rgba(255,210,230,.13),transparent 35%),linear-gradient(180deg,rgba(8,9,11,.08),rgba(8,9,11,.72))}
-.particles{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
-.particle{position:absolute;width:var(--size);height:var(--size);border-radius:50%;background:rgba(255,205,225,var(--alpha));box-shadow:0 0 12px rgba(255,190,220,.35);animation:float var(--duration) linear infinite;left:var(--left);top:var(--top)}
-.particle.petal{width:9px;height:5px;border-radius:100% 0 100% 0;transform:rotate(var(--rotate));background:rgba(255,190,220,.55);box-shadow:0 0 10px rgba(255,160,205,.25);animation-name:petalFloat}
-@keyframes float{0%{transform:translate3d(0,18vh,0) scale(.5);opacity:0}15%{opacity:var(--alpha)}75%{opacity:var(--alpha)}100%{transform:translate3d(var(--drift),-115vh,0) scale(1.1);opacity:0}}
-@keyframes petalFloat{0%{transform:translate3d(0,15vh,0) rotate(var(--rotate));opacity:0}15%{opacity:.8}50%{transform:translate3d(var(--drift),-45vh,0) rotate(calc(var(--rotate) + 160deg))}100%{transform:translate3d(calc(var(--drift) * -1),-115vh,0) rotate(calc(var(--rotate) + 330deg));opacity:0}}
 
-#loader{position:fixed;z-index:200;inset:0;background:#08090b;display:grid;place-items:center;align-content:center;gap:15px;transition:.7s}.loader-logo{font-size:45px;font-weight:800;letter-spacing:.18em}.loader-bar{width:180px;height:1px;background:#24272c}.loader-bar i{display:block;width:0;height:100%;background:#fff;animation:load 1.25s ease forwards}.loader-bar+span{font:10px "DM Mono";letter-spacing:.18em;color:#666}@keyframes load{to{width:100%}}#loader.done{opacity:0;pointer-events:none}
-header{position:fixed;z-index:50;top:0;left:0;right:0;height:76px;padding:0 max(24px,calc((100vw - 1180px)/2));display:flex;align-items:center;border-bottom:1px solid rgba(255,255,255,.06);background:rgba(8,9,11,.72);backdrop-filter:blur(18px)}.brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:.1em}.brand img{width:30px;height:30px;object-fit:contain;border-radius:8px}.brand img[src=""],.hero-logo img[src=""]{visibility:hidden}nav{margin-left:auto;display:flex;gap:32px}nav a{font-size:12px;color:#92969c;transition:.2s}nav a:hover{color:#fff}.nav-actions{display:flex;gap:8px;margin-left:28px}.nav-actions button{width:35px;height:35px;border:1px solid var(--line);background:#0f1114;color:#ddd;border-radius:9px;cursor:pointer}.hamb{display:none}
-.hero{min-height:100vh;background:linear-gradient(180deg,rgba(8,9,11,.06),rgba(8,9,11,.18));position:relative;display:grid;place-items:center;overflow:hidden;text-align:center}.hero-copy{position:relative;z-index:2;padding-top:60px}.status{display:inline-flex;align-items:center;gap:8px;padding:7px 11px;border:1px solid var(--line);border-radius:99px;color:#9da1a7;font:10px "DM Mono";letter-spacing:.08em}.status i{width:5px;height:5px;border-radius:50%;background:#d7d7d2;box-shadow:0 0 12px #fff}.status b{color:#fff;font-weight:500}.hero-logo{width:86px;height:86px;margin:28px auto 24px;padding:13px;border:1px solid var(--line);border-radius:23px;background:rgba(20,22,26,.8)}.hero-logo img{width:100%;height:100%;object-fit:contain;border-radius:13px}.kicker,.label{font:10px "DM Mono";letter-spacing:.18em;color:#73777d}.hero h1{font-size:clamp(58px,9vw,120px);line-height:.91;letter-spacing:-.07em;margin:16px 0 25px;font-weight:800}.hero h1 em,h2 em{font-style:normal;color:#858a91}.hero-desc{max-width:570px;color:var(--muted);margin:0 auto 30px;font-size:15px}.hero-actions{display:flex;justify-content:center;align-items:center;gap:24px}.btn{display:inline-flex;gap:22px;align-items:center;padding:13px 18px;border:1px solid var(--line);border-radius:9px;font-size:12px;font-weight:700;transition:.25s}.btn:hover{transform:translateY(-2px)}.btn.light{background:#f1f1ee;color:#08090b;border-color:#f1f1ee}.text-btn{font-size:12px;color:#888d94}.text-btn span{margin-left:8px}.scroll{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);font:9px "DM Mono";letter-spacing:.18em;color:#555}.scroll i{display:block;width:1px;height:28px;background:#444;margin:9px auto 0}.orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:.18}.orb-a{width:480px;height:480px;background:#777;left:-230px;top:25%}.orb-b{width:400px;height:400px;background:#444;right:-200px;bottom:10%}
-.section{max-width:var(--max);margin:auto;padding:145px 24px}.about{border-top:1px solid var(--line)}.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:100px;margin-top:45px}.section h2{font-size:clamp(42px,6vw,72px);line-height:.98;letter-spacing:-.055em;margin:0}.about-text{max-width:560px}.about-text p{color:var(--muted);font-size:15px;margin:0 0 22px}.section-title{margin:22px 0 52px}.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}.feature{min-height:270px;padding:28px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(14,16,19,.4);transition:.25s}.feature:hover{background:#111318}.feature>span{font:10px "DM Mono";color:#555}.icon{font-size:23px;color:#c8c9c7;margin:40px 0 17px}.feature h3{font-size:17px;margin:0 0 8px}.feature p{font-size:12px;line-height:1.7;color:var(--muted);max-width:270px}.system{border-top:1px solid var(--line)}.system-head{display:grid;grid-template-columns:1.2fr .8fr;gap:80px;margin:25px 0 70px}.system-head p{color:var(--muted);max-width:380px;font-size:14px}.system-lines{border-top:1px solid var(--line)}.line{display:grid;grid-template-columns:70px 1fr 220px;padding:24px 0;border-bottom:1px solid var(--line);align-items:center}.line b{font:10px "DM Mono";color:#555}.line strong{font-size:14px}.line span{font-size:11px;color:#73777d}.download{padding:150px 24px;background:#f0f0ed;color:#08090b}.download-inner{max-width:1180px;margin:auto}.download .label{color:#777}.download h2{font-size:clamp(55px,9vw,110px);line-height:.9;letter-spacing:-.07em;margin:20px 0}.download h2 em{color:#888}.download p{color:#6c7074;font-size:14px;margin-bottom:30px}.download .btn{margin-top:10px}.download small{display:block;font:9px "DM Mono";color:#777;margin-top:14px}footer{max-width:var(--max);margin:auto;padding:30px 24px;display:flex;justify-content:space-between;color:#676b71;font-size:11px}footer strong{color:#eee;letter-spacing:.1em}footer p{margin:0}.reveal{opacity:0;transform:translateY(22px);transition:.8s ease}.reveal.show{opacity:1;transform:none}
-@media(max-width:760px){header{height:64px;padding:0 18px}.hamb{display:block}nav{display:none;position:absolute;top:70px;left:12px;right:12px;padding:8px;background:#111318;border:1px solid var(--line);border-radius:12px;flex-direction:column;gap:0}nav.open{display:flex}nav a{padding:13px}.nav-actions{margin-left:auto}.hero{padding:0 20px}.hero h1{font-size:62px}.hero-desc{font-size:13px}.hero-actions{flex-direction:column;gap:16px}.section{padding:100px 20px}.about-grid,.system-head{grid-template-columns:1fr;gap:35px}.feature-grid{grid-template-columns:1fr}.feature{min-height:230px}.line{grid-template-columns:45px 1fr}.line span{display:none}.download{padding:100px 20px}footer{padding:25px 20px;display:block}footer p{margin-top:10px}}
-
-@media(prefers-reduced-motion:reduce){.particle{animation:none}.reveal{transition:none}}
-
-.developer-link{color:#f0b7cf!important;border-bottom:1px solid rgba(240,183,207,.35);padding-bottom:2px}
-.download-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-.developer-btn{display:inline-flex;align-items:center;gap:18px;padding:13px 18px;border:1px solid #bfc1c0;border-radius:9px;color:#242528;background:transparent;font-size:12px;font-weight:700;transition:.25s}
-.developer-btn:hover{transform:translateY(-2px);background:#e4e4e1}
-@media(max-width:760px){.download-actions{width:100%;flex-direction:column;align-items:flex-start}.developer-btn,.download-actions .btn{width:100%;justify-content:space-between}.developer-link{border-bottom:0}}
-
+<style>@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap');
+:root{--bg:#08090b;--surface:rgba(12,13,17,.68);--surface2:rgba(20,20,25,.62);--text:#f7f4f5;--muted:#b0a7ad;--line:rgba(255,255,255,.13);--pink:#f3a8c7;--pink2:#ffdae8;--max:1180px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Manrope,system-ui,sans-serif;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:98;background:linear-gradient(90deg,transparent 0,rgba(255,255,255,.025) 50%,transparent 100%);mix-blend-mode:overlay}
+a{text-decoration:none;color:inherit}button{font:inherit}
+.garden-bg{position:fixed;inset:-2%;z-index:-8;background-image:linear-gradient(rgba(8,8,12,.30),rgba(8,8,12,.66)),var(--garden-image);background-size:cover;background-position:center;filter:blur(var(--garden-blur));transform:scale(1.035);transition:filter .5s}
+.bg-vignette{position:fixed;inset:0;z-index:-7;pointer-events:none;background:radial-gradient(circle at 50% 25%,rgba(255,190,220,.16),transparent 34%),radial-gradient(circle at 15% 80%,rgba(110,80,120,.12),transparent 35%),linear-gradient(180deg,rgba(5,5,8,.05),rgba(5,5,8,.78))}
+.noise{position:fixed;inset:0;pointer-events:none;opacity:.025;z-index:99;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.particles{position:fixed;inset:0;z-index:-2;pointer-events:none;overflow:hidden}.particle{position:absolute;width:var(--size);height:var(--size);border-radius:50%;background:rgba(255,210,230,var(--alpha));box-shadow:0 0 18px rgba(255,170,210,.45);animation:float var(--duration) linear infinite;left:var(--left);top:var(--top)}.particle.petal{width:10px;height:6px;border-radius:100% 0 100% 0;transform:rotate(var(--rotate));background:rgba(255,188,216,.62);animation-name:petalFloat}@keyframes float{0%{transform:translate3d(0,18vh,0) scale(.4);opacity:0}12%{opacity:var(--alpha)}80%{opacity:var(--alpha)}100%{transform:translate3d(var(--drift),-115vh,0) scale(1.1);opacity:0}}@keyframes petalFloat{0%{transform:translate3d(0,15vh,0) rotate(var(--rotate));opacity:0}15%{opacity:.75}50%{transform:translate3d(var(--drift),-45vh,0) rotate(calc(var(--rotate) + 160deg))}100%{transform:translate3d(calc(var(--drift) * -1),-115vh,0) rotate(calc(var(--rotate) + 330deg));opacity:0}}
+.cursor-glow{position:fixed;width:280px;height:280px;border-radius:50%;pointer-events:none;z-index:0;background:radial-gradient(circle,rgba(255,170,210,.12),transparent 68%);transform:translate(-50%,-50%);opacity:.65;transition:opacity .3s}
+#loader{position:fixed;z-index:200;inset:0;background:#09090b;display:grid;place-items:center;align-content:center;gap:13px;transition:opacity .8s,visibility .8s}.loader-mark{width:70px;height:70px;border:1px solid rgba(255,210,230,.35);border-radius:20px;display:grid;place-items:center;position:relative;animation:loaderPulse 1.8s ease-in-out infinite}.loader-mark span{font-size:32px;font-weight:800;background:linear-gradient(135deg,#fff,#f2a6c5);-webkit-background-clip:text;color:transparent}.loader-mark i{position:absolute;inset:-7px;border:1px solid rgba(255,190,215,.12);border-radius:25px;animation:spin 5s linear infinite}.loader-word{font-size:15px;letter-spacing:.35em;font-weight:800}.loader-word b{color:var(--pink)}.loader-bar{width:190px;height:2px;background:#25242a;overflow:hidden}.loader-bar i{display:block;width:0;height:100%;background:linear-gradient(90deg,#fff,var(--pink));animation:load 1.5s ease forwards}.loader-mark+ .loader-word{}.loader-word+ .loader-bar{}#loader>span{font:10px "DM Mono",monospace;color:#777;letter-spacing:.2em}@keyframes load{to{width:100%}}@keyframes loaderPulse{50%{transform:scale(1.06);box-shadow:0 0 35px rgba(255,180,210,.13)}}@keyframes spin{to{transform:rotate(360deg)}}
+header{position:fixed;z-index:80;top:0;left:0;right:0;height:78px;padding:0 34px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.09);background:rgba(8,8,11,.36);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);transition:.35s}
+header.scrolled{background:rgba(8,8,11,.76);height:70px;box-shadow:0 15px 40px rgba(0,0,0,.18)}
+.brand{display:flex;align-items:baseline;gap:7px;font-size:18px;letter-spacing:.15em;font-weight:800}.brand-main{color:#fff}.brand-accent{color:var(--pink);font-size:11px;letter-spacing:.23em;position:relative}.brand-accent:after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:1px;background:linear-gradient(90deg,var(--pink),transparent);animation:lineGlow 2s infinite}@keyframes lineGlow{50%{opacity:.25;transform:scaleX(.55)}}
+nav{display:flex;gap:28px;align-items:center}nav a{font:11px "DM Mono",monospace;color:#bcb6bb;letter-spacing:.05em;transition:.25s;position:relative}nav a:after{content:"";position:absolute;left:0;right:100%;bottom:-8px;height:1px;background:var(--pink);transition:.25s}nav a:hover{color:#fff}nav a:hover:after{right:0}.developer-link{color:var(--pink)!important}.nav-actions{display:flex;gap:9px}.nav-actions button{width:44px;height:44px;border:1px solid rgba(255,255,255,.1);background:rgba(14,15,20,.62);border-radius:13px;color:#fff;display:grid;place-items:center;cursor:pointer;transition:.3s}.nav-actions button:hover{border-color:rgba(255,190,215,.45);transform:translateY(-2px);box-shadow:0 8px 30px rgba(255,150,200,.12)}
+.sound-bars{display:flex;gap:2px;height:15px;align-items:center}.sound-bars i{width:2px;height:7px;background:#ddd;border-radius:4px;animation:bar 1s ease-in-out infinite}.sound-bars i:nth-child(2){animation-delay:.15s}.sound-bars i:nth-child(3){animation-delay:.3s}.sound-bars i:nth-child(4){animation-delay:.45s}.sound-bars.off i{animation:none;height:3px}@keyframes bar{50%{height:14px;background:var(--pink)}}
+.hamb{display:none!important}.hamb span{width:18px;height:1px;background:#fff;display:block;transition:.25s}.hamb span+span{margin-top:5px}
+.hero{min-height:100vh;position:relative;display:flex;align-items:center;padding:130px max(34px,calc((100vw - var(--max))/2));overflow:hidden}.hero-grid{position:absolute;inset:0;opacity:.16;background-image:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);background-size:90px 90px;mask-image:linear-gradient(180deg,#000,transparent 78%);animation:gridMove 18s linear infinite}@keyframes gridMove{to{background-position:90px 90px}}
+.hero:after{content:"";position:absolute;inset:auto 0 0;height:28%;background:linear-gradient(transparent,var(--bg));pointer-events:none}.hero-copy{width:min(820px);position:relative;z-index:2}.eyebrow{display:flex;align-items:center;gap:10px;color:#b9b0b6;font:10px "DM Mono",monospace;letter-spacing:.15em;margin-bottom:28px}.eyebrow i{width:6px;height:6px;border-radius:50%;background:#ffb8d3;box-shadow:0 0 16px #ff9fc5;animation:blink 1.5s infinite}.eyebrow b{border:1px solid rgba(255,255,255,.18);padding:5px 8px;border-radius:99px;color:#fff;font-weight:400}@keyframes blink{50%{opacity:.3;box-shadow:0 0 4px #ff9fc5}}
+.text-logo{display:flex;align-items:baseline;gap:10px;font-size:clamp(48px,10vw,116px);font-weight:800;letter-spacing:-.075em;line-height:.82;margin-bottom:24px}.text-logo span{background:linear-gradient(120deg,#fff 15%,#f4d9e4 45%,#e99abb 90%);-webkit-background-clip:text;color:transparent;filter:drop-shadow(0 10px 25px rgba(255,180,210,.08))}.text-logo em{font:800 clamp(16px,2.3vw,27px) "DM Mono",monospace;color:var(--pink);letter-spacing:.16em;font-style:normal;position:relative;top:-10px}.text-logo em:before{content:"";position:absolute;left:0;right:0;bottom:-9px;height:1px;background:linear-gradient(90deg,var(--pink),transparent)}
+.kicker{font:10px "DM Mono",monospace;letter-spacing:.28em;color:#b8aeb5;margin:0 0 13px}.kicker span{color:var(--pink);margin-left:6px}.hero h1{font-size:clamp(55px,8.7vw,108px);line-height:.88;letter-spacing:-.075em;margin:0 0 26px;font-weight:800}.hero h1 em{font-style:normal;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.58)}.hero h1 strong{background:linear-gradient(90deg,#fff,#efacc7);-webkit-background-clip:text;color:transparent}
+.hero-desc{max-width:590px;color:#c0b9be;font-size:15px;line-height:1.85;margin:0 0 30px}.hero-actions{display:flex;gap:16px;align-items:center}.btn{display:inline-flex;align-items:center;justify-content:space-between;gap:35px;padding:15px 18px;border:1px solid rgba(255,255,255,.2);border-radius:13px;font-size:12px;font-weight:800;min-width:165px;transition:.3s;position:relative;overflow:hidden}.btn:before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent,rgba(255,255,255,.25),transparent);transform:translateX(-120%);transition:.6s}.btn:hover:before{transform:translateX(120%)}.btn:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(255,170,205,.14)}.btn.primary{background:linear-gradient(135deg,#fff,#f0dce5);color:#151216}.btn b{font-size:17px}.text-btn{font-size:12px;color:#c8c1c5;padding:12px;transition:.25s}.text-btn:hover{color:#fff;transform:translateX(4px)}.text-btn span{margin-left:15px;color:var(--pink)}
+.hero-meta{display:flex;gap:34px;margin-top:52px;padding-top:18px;border-top:1px solid rgba(255,255,255,.12);width:min(700px)}.hero-meta div{display:flex;flex-direction:column;gap:6px}.hero-meta small{font:9px "DM Mono",monospace;color:#777}.hero-meta b{font:10px "DM Mono",monospace;color:#ddd}.hero-meta b i{display:inline-block;width:5px;height:5px;background:#b9f2c7;border-radius:50%;margin-right:5px;box-shadow:0 0 10px #9cf0b0}.scroll{position:absolute;right:38px;bottom:35px;display:flex;align-items:center;gap:10px;font:9px "DM Mono",monospace;color:#999;writing-mode:vertical-rl;letter-spacing:.22em}.scroll i{height:45px;width:1px;background:linear-gradient(var(--pink),transparent);animation:scrollLine 1.8s infinite}@keyframes scrollLine{50%{transform:scaleY(.45);transform-origin:top}}
+.hero-side-note{position:absolute;right:34px;top:50%;transform:rotate(90deg) translateX(50%);transform-origin:right center;font:9px "DM Mono",monospace;color:#777;letter-spacing:.2em}.hero-side-note span{color:var(--pink);padding:0 10px}.hero-orbit{position:absolute;border:1px solid rgba(255,190,215,.09);border-radius:50%;pointer-events:none}.orbit-1{width:620px;height:620px;right:-250px;top:13%;animation:spin 28s linear infinite}.orbit-2{width:430px;height:430px;right:-150px;top:26%;border-style:dashed;animation:spin 20s linear infinite reverse}
+.section{padding:125px max(34px,calc((100vw - var(--max))/2));position:relative;background:linear-gradient(180deg,rgba(8,9,11,.82),rgba(8,9,11,.72));border-top:1px solid rgba(255,255,255,.07)}.section-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:65px}.label{font:10px "DM Mono",monospace;color:#aaa0a7;letter-spacing:.18em}.section-index{font:10px "DM Mono",monospace;color:#625e63;border:1px solid rgba(255,255,255,.1);padding:8px 10px;border-radius:50%}.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:80px}.about h2,.section-title h2,.system-head h2{font-size:clamp(43px,6vw,78px);line-height:.95;letter-spacing:-.065em;margin:0}.about h2 em,.section-title h2 em,.system-head h2 em{font-style:normal;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.5)}.about-text{padding-top:10px}.about-text p{color:#a9a1a7;line-height:1.9;font-size:14px;max-width:540px}.about-text .lead{font-size:17px;color:#d3cdd1}.mini-line{display:flex;align-items:center;gap:12px;margin-top:35px;font:9px "DM Mono",monospace;color:#aaa}.mini-line span{width:50px;height:1px;background:var(--pink);box-shadow:0 0 14px rgba(255,170,205,.45)}.info-strip{display:grid;grid-template-columns:repeat(4,1fr);margin-top:90px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.info-strip>div{padding:22px 16px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:6px}.info-strip>div:last-child{border-right:0}.info-strip span{font:9px "DM Mono";color:var(--pink)}.info-strip b{font:11px "DM Mono";letter-spacing:.08em}.info-strip small{font-size:10px;color:#777}
+.features-section{background:rgba(7,8,10,.84)}.section-title{margin-bottom:55px}.section-title p,.system-head p{font:9px "DM Mono";color:var(--pink);letter-spacing:.22em;margin:0 0 15px}.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);border-left:1px solid var(--line);border-top:1px solid var(--line)}.feature{min-height:275px;padding:25px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:linear-gradient(135deg,rgba(255,255,255,.025),transparent);position:relative;overflow:hidden;transition:.45s}.feature:before{content:"";position:absolute;width:140px;height:140px;right:-65px;top:-65px;border-radius:50%;background:radial-gradient(circle,rgba(255,175,210,.14),transparent 70%);transition:.45s}.feature:hover{background:rgba(255,180,210,.035);transform:translateY(-4px);border-color:rgba(255,190,215,.22)}.feature:hover:before{transform:scale(1.8)}.feature>span{font:9px "DM Mono";color:#656067}.feature .icon{font-size:24px;color:var(--pink);margin:35px 0 22px;text-shadow:0 0 25px rgba(255,160,205,.25)}.feature h3{font-size:19px;margin:0 0 10px}.feature p{font-size:12px;line-height:1.8;color:#88848a;max-width:270px}.card-arrow{position:absolute;right:24px;bottom:22px;color:#777;font-size:15px;transition:.3s}.feature:hover .card-arrow{color:var(--pink);transform:translate(3px,-3px)}
+.marquee{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(255,190,215,.025);white-space:nowrap}.marquee div{display:inline-block;padding:18px 0;font:11px "DM Mono";letter-spacing:.18em;color:#aaa;animation:marquee 24s linear infinite}.marquee span{color:var(--pink);margin:0 28px}@keyframes marquee{to{transform:translateX(-50%)}}
+.system{background:linear-gradient(180deg,rgba(8,9,11,.82),rgba(12,8,11,.92))}.system-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:70px}.system-badge{width:90px;height:90px;border:1px solid rgba(255,190,215,.25);border-radius:22px;display:grid;place-items:center;text-align:center;font:9px "DM Mono";color:#aaa;letter-spacing:.12em;transform:rotate(8deg);animation:badgeFloat 3s ease-in-out infinite}.system-badge b{color:var(--pink)}@keyframes badgeFloat{50%{transform:rotate(-2deg) translateY(-7px)}}.system-head>div{max-width:700px}.system-head p{margin-bottom:16px}.system-head h2{font-size:clamp(44px,6vw,72px)}.system-lines{border-top:1px solid var(--line)}.line{display:grid;grid-template-columns:70px 1.1fr 1fr 40px;align-items:center;gap:20px;padding:25px 0;border-bottom:1px solid var(--line);transition:.35s}.line:hover{padding-left:12px;background:linear-gradient(90deg,rgba(255,180,210,.035),transparent)}.line>b{font:10px "DM Mono";color:#67636a}.line strong{font-size:15px}.line span{font:11px "DM Mono";color:#777}.line i{font-style:normal;color:#777}.line:hover i{color:var(--pink)}
+.download{min-height:75vh;display:grid;place-items:center;text-align:center;padding:110px 34px;position:relative;overflow:hidden;background:radial-gradient(circle at 50% 40%,rgba(255,160,205,.09),transparent 32%),linear-gradient(180deg,rgba(8,9,11,.92),rgba(10,7,10,.96))}.download:before{content:"GHEA";position:absolute;font-size:28vw;font-weight:800;letter-spacing:-.09em;color:rgba(255,255,255,.018);white-space:nowrap;pointer-events:none}.download-glow{position:absolute;width:420px;height:420px;border-radius:50%;border:1px solid rgba(255,180,215,.09);box-shadow:0 0 100px rgba(255,150,205,.06);animation:spin 20s linear infinite}.download-inner{position:relative;z-index:2}.download-title{margin:25px 0 18px;display:flex;flex-direction:column}.download-title span{font:10px "DM Mono";letter-spacing:.25em;color:#777}.download-title strong{font-size:clamp(55px,9vw,110px);letter-spacing:-.075em;line-height:.9}.download-title em{font-style:normal;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.55)}.download-inner>p{color:#999;font-size:13px}.download-actions{display:flex;justify-content:center;gap:12px;margin-top:30px}.developer-btn{display:inline-flex;align-items:center;justify-content:space-between;gap:45px;padding:15px 18px;border:1px solid rgba(255,255,255,.18);border-radius:13px;color:#eee;background:rgba(255,255,255,.035);font-size:12px;font-weight:800;transition:.3s;min-width:150px}.developer-btn:hover{transform:translateY(-3px);border-color:rgba(255,190,215,.4);box-shadow:0 15px 35px rgba(255,150,200,.1)}.developer-btn b{color:var(--pink)}#filename{display:block;color:#5f5a60;font:9px "DM Mono";margin-top:18px}
+footer{padding:30px max(34px,calc((100vw - var(--max))/2));display:flex;align-items:center;justify-content:space-between;gap:20px;border-top:1px solid var(--line);background:#08090b;color:#6d686d}footer p{font:9px "DM Mono";margin:0}.footer-brand{font-size:14px;font-weight:800;letter-spacing:.12em;color:#eee}.footer-brand b{font:9px "DM Mono";color:var(--pink);margin-left:5px}.footer-center{font:9px "DM Mono";letter-spacing:.14em}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.8,.2,1)}.reveal.visible{opacity:1;transform:none}.feature:nth-child(2){transition-delay:.08s}.feature:nth-child(3){transition-delay:.16s}.feature:nth-child(4){transition-delay:.08s}.feature:nth-child(5){transition-delay:.16s}.feature:nth-child(6){transition-delay:.24s}
+@media(max-width:900px){nav{position:fixed;top:78px;left:14px;right:14px;padding:18px;display:flex;flex-direction:column;align-items:flex-start;gap:18px;background:rgba(10,10,14,.94);border:1px solid var(--line);border-radius:18px;backdrop-filter:blur(20px);opacity:0;visibility:hidden;transform:translateY(-10px);transition:.3s}nav.open{opacity:1;visibility:visible;transform:none}.hamb{display:grid!important}.hero{padding:120px 25px 80px}.hero-side-note{display:none}.hero-meta{gap:18px}.about-grid{grid-template-columns:1fr;gap:35px}.feature-grid{grid-template-columns:repeat(2,1fr)}.info-strip{grid-template-columns:repeat(2,1fr)}.info-strip>div:nth-child(2){border-right:0}.info-strip>div:nth-child(-n+2){border-bottom:1px solid var(--line)}.system-head{align-items:flex-start}.line{grid-template-columns:45px 1fr 40px}.line span{display:none}.section{padding:95px 25px}}
+@media(max-width:600px){header{padding:0 18px;height:68px}.hero{min-height:100svh;padding:110px 20px 70px}.text-logo{font-size:58px}.hero h1{font-size:58px}.hero-desc{font-size:13px}.hero-actions{flex-direction:column;align-items:flex-start}.hero-actions .btn{width:185px}.hero-meta{margin-top:38px;gap:15px;flex-wrap:wrap}.hero-meta div{min-width:95px}.scroll{right:18px}.section{padding:85px 20px}.section-top{margin-bottom:45px}.about h2,.section-title h2,.system-head h2{font-size:45px}.feature-grid{grid-template-columns:1fr}.feature{min-height:230px}.info-strip{grid-template-columns:1fr}.info-strip>div{border-right:0!important;border-bottom:1px solid var(--line)}.info-strip>div:last-child{border-bottom:0}.system-head{gap:30px}.system-badge{width:65px;height:65px;flex:none}.line{grid-template-columns:35px 1fr 25px}.line strong{font-size:13px}.download{padding:100px 20px;min-height:70vh}.download-actions{flex-direction:column;align-items:center;width:100%}.download-actions .btn,.developer-btn{width:min(300px,100%)}footer{padding:25px 20px;flex-direction:column;align-items:flex-start}.footer-center{order:3}.cursor-glow{display:none}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.001ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}.reveal{transition:none}}
 </style>
 </head>
 <body>
 <div id="gardenBg" class="garden-bg"></div>
+<div class="bg-vignette"></div>
 <div id="particles" class="particles" aria-hidden="true"></div>
+<div class="cursor-glow"></div>
 <div class="noise"></div>
-<div id="loader"><div class="loader-logo">GHEA</div><div class="loader-bar"><i></i></div><span>INITIALIZING</span></div>
 
-<header>
-  <a href="#home" class="brand"><img id="navLogo"><span>GHEA</span></a>
+<div id="loader">
+  <div class="loader-mark"><span>G</span><i></i></div>
+  <div class="loader-word">GHEA <b>INFO</b></div>
+  <div class="loader-bar"><i></i></div>
+  <span>INITIALIZING EXPERIENCE</span>
+</div>
+
+<header id="topbar">
+  <a href="#home" class="brand" aria-label="GHEA INFO home">
+    <span class="brand-main">GHEA</span><span class="brand-accent">INFO</span>
+  </a>
   <nav id="nav">
-    <a href="#about">About</a><a href="#features">Features</a><a href="#system">System</a><a href="#download">Download</a><a id="developerLink" class="developer-link" target="_blank" rel="noopener">Developer ↗</a>
+    <a href="#about">About</a>
+    <a href="#features">Features</a>
+    <a href="#system">System</a>
+    <a href="#download">Download</a>
+    <a id="developerLink" class="developer-link" target="_blank" rel="noopener">Developer <span>↗</span></a>
   </nav>
-  <div class="nav-actions"><button id="sound" title="Sound">◉</button><button id="menu" class="hamb">☰</button></div>
+  <div class="nav-actions">
+    <button id="sound" title="Sound" aria-label="Toggle sound"><span class="sound-bars"><i></i><i></i><i></i><i></i></span></button>
+    <button id="menu" class="hamb" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
 </header>
 
 <main>
 <section id="home" class="hero">
-  <div class="orb orb-a"></div><div class="orb orb-b"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-orbit orbit-1"></div><div class="hero-orbit orbit-2"></div>
   <div class="hero-copy reveal">
-    <div class="status"><i></i> GHEA <b id="version">V1</b></div>
-    <div class="hero-logo"><img id="heroLogo"></div>
-    <p class="kicker">THE GHEA EXPERIENCE</p>
-    <h1>Simple.<br><em>Distinctive.</em><br>GHEA.</h1>
+    <div class="eyebrow"><i></i><span>OFFICIAL GHEA INFORMATION</span><b id="version">V1</b></div>
+    <div class="text-logo" aria-label="GHEA INFO"><span>GHEA</span><em>INFO</em></div>
+    <p class="kicker">THE GHEA EXPERIENCE <span>✦</span></p>
+    <h1>Simple.<br><em>Distinctive.</em><br><strong>GHEA.</strong></h1>
     <p class="hero-desc" id="description"></p>
-    <div class="hero-actions"><a class="btn light" href="#download">Get GHEA <span>↗</span></a><a class="text-btn" href="#features">Explore the system <span>↓</span></a></div>
+    <div class="hero-actions">
+      <a class="btn primary" href="#download"><span>Get GHEA</span><b>↗</b></a>
+      <a class="text-btn" href="#features">Explore the system <span>↓</span></a>
+    </div>
+    <div class="hero-meta">
+      <div><small>STATUS</small><b><i></i> ONLINE</b></div>
+      <div><small>TYPE</small><b>WHATSAPP BOT</b></div>
+      <div><small>EDITION</small><b>GHEA V1</b></div>
+    </div>
   </div>
-  <div class="scroll">SCROLL <i></i></div>
+  <div class="scroll"><span>SCROLL</span><i></i></div>
+  <div class="hero-side-note">GHEA / 2026 <span>—</span> ALWAYSLENNZ</div>
 </section>
 
 <section id="about" class="section about">
-  <div class="label reveal">01 — ABOUT GHEA</div>
+  <div class="section-top reveal"><span class="label">01 — ABOUT GHEA</span><span class="section-index">01</span></div>
   <div class="about-grid">
     <div class="reveal"><h2>Built around a<br><em>better experience.</em></h2></div>
-    <div class="about-text reveal"><p>GHEA adalah WhatsApp bot dengan konsep modern dan terstruktur. Fokusnya bukan sekadar banyak command, tetapi bagaimana sebuah sistem terasa rapi, mudah digunakan, dan tetap siap dikembangkan.</p><p>Website ini menjadi ruang resmi untuk mengenal GHEA, melihat kemampuan utamanya, dan mendapatkan script GHEA.</p></div>
+    <div class="about-text reveal">
+      <p class="lead">GHEA adalah WhatsApp bot dengan konsep modern dan terstruktur. Fokusnya bukan sekadar banyak command, tetapi bagaimana sebuah sistem terasa rapi, mudah digunakan, dan tetap siap dikembangkan.</p>
+      <p>Website ini menjadi ruang informasi resmi GHEA untuk mengenal sistem, memahami kemampuan utama, dan mendapatkan script GHEA.</p>
+      <div class="mini-line"><span></span><b>GHEA INFORMATION SYSTEM</b></div>
+    </div>
+  </div>
+  <div class="info-strip reveal">
+    <div><span>01</span><b>MODERN UI</b><small>Clean visual language</small></div>
+    <div><span>02</span><b>STRUCTURED</b><small>Organized architecture</small></div>
+    <div><span>03</span><b>EXPANDABLE</b><small>Ready to grow</small></div>
+    <div><span>04</span><b>DEVELOPER</b><small>Built with flexibility</small></div>
   </div>
 </section>
 
-<section id="features" class="section">
-  <div class="label reveal">02 — FEATURES</div>
-  <div class="section-title reveal"><h2>Everything you need.<br><em>Nothing unnecessary.</em></h2></div>
+<section id="features" class="section features-section">
+  <div class="section-top reveal"><span class="label">02 — FEATURES</span><span class="section-index">02</span></div>
+  <div class="section-title reveal"><p>CAPABILITIES</p><h2>Everything you need.<br><em>Nothing unnecessary.</em></h2></div>
   <div class="feature-grid">
-    <article class="feature reveal"><span>01</span><div class="icon">✦</div><h3>Multi Device</h3><p>Pengalaman bot yang dirancang untuk ekosistem WhatsApp Multi Device.</p></article>
-    <article class="feature reveal"><span>02</span><div class="icon">⌁</div><h3>Command System</h3><p>Struktur command yang terorganisir untuk penggunaan yang lebih nyaman.</p></article>
-    <article class="feature reveal"><span>03</span><div class="icon">◈</div><h3>Flexible</h3><p>Konsep yang mudah diperluas sesuai kebutuhan dan arah project.</p></article>
-    <article class="feature reveal"><span>04</span><div class="icon">↗</div><h3>API Ready</h3><p>Dapat dikembangkan untuk terhubung dengan layanan API eksternal.</p></article>
-    <article class="feature reveal"><span>05</span><div class="icon">⌘</div><h3>Developer Friendly</h3><p>Pengaturan dan sistem dibuat dengan pendekatan yang mudah dipahami.</p></article>
-    <article class="feature reveal"><span>06</span><div class="icon">∞</div><h3>Expandable</h3><p>GHEA dapat terus berkembang dengan fitur dan sistem baru.</p></article>
+    <article class="feature reveal"><span>01</span><div class="icon">✦</div><h3>Multi Device</h3><p>Pengalaman bot yang dirancang untuk ekosistem WhatsApp Multi Device.</p><b class="card-arrow">↗</b></article>
+    <article class="feature reveal"><span>02</span><div class="icon">⌁</div><h3>Command System</h3><p>Struktur command yang terorganisir untuk penggunaan yang lebih nyaman.</p><b class="card-arrow">↗</b></article>
+    <article class="feature reveal"><span>03</span><div class="icon">◈</div><h3>Flexible</h3><p>Konsep yang mudah diperluas sesuai kebutuhan dan arah project.</p><b class="card-arrow">↗</b></article>
+    <article class="feature reveal"><span>04</span><div class="icon">↗</div><h3>API Ready</h3><p>Dapat dikembangkan untuk terhubung dengan layanan API eksternal.</p><b class="card-arrow">↗</b></article>
+    <article class="feature reveal"><span>05</span><div class="icon">⌘</div><h3>Developer Friendly</h3><p>Pengaturan dan sistem dibuat dengan pendekatan yang mudah dipahami.</p><b class="card-arrow">↗</b></article>
+    <article class="feature reveal"><span>06</span><div class="icon">∞</div><h3>Expandable</h3><p>GHEA dapat terus berkembang dengan fitur dan sistem baru.</p><b class="card-arrow">↗</b></article>
   </div>
 </section>
+
+<div class="marquee" aria-hidden="true"><div>GHEA INFO <span>✦</span> MODERN BOT <span>✦</span> MULTI DEVICE <span>✦</span> ALWAYSLENNZ <span>✦</span> GHEA INFO <span>✦</span> MODERN BOT <span>✦</span></div></div>
 
 <section id="system" class="section system">
-  <div class="label reveal">03 — SYSTEM</div>
-  <div class="system-head reveal"><h2>Under the surface,<br><em>there's a system.</em></h2><p>GHEA dibangun dengan pola yang memungkinkan setiap bagian dikembangkan tanpa mengorbankan pengalaman pengguna.</p></div>
+  <div class="section-top reveal"><span class="label">03 — SYSTEM</span><span class="section-index">03</span></div>
+  <div class="system-head reveal"><div><p>ARCHITECTURE</p><h2>Under the surface,<br><em>there's a system.</em></h2></div><span class="system-badge">GHEA<br><b>CORE</b></span></div>
   <div class="system-lines">
-    <div class="line reveal"><b>01</b><strong>Configuration</strong><span>Centralized & adjustable</span></div>
-    <div class="line reveal"><b>02</b><strong>Command Architecture</strong><span>Organized & expandable</span></div>
-    <div class="line reveal"><b>03</b><strong>External Services</strong><span>Ready for integrations</span></div>
-    <div class="line reveal"><b>04</b><strong>Branding</strong><span>Fully customizable</span></div>
+    <div class="line reveal"><b>01</b><strong>Configuration</strong><span>Centralized & adjustable</span><i>↗</i></div>
+    <div class="line reveal"><b>02</b><strong>Command Architecture</strong><span>Organized & expandable</span><i>↗</i></div>
+    <div class="line reveal"><b>03</b><strong>External Services</strong><span>Ready for integrations</span><i>↗</i></div>
+    <div class="line reveal"><b>04</b><strong>Branding</strong><span>Fully customizable</span><i>↗</i></div>
   </div>
 </section>
 
 <section id="download" class="download">
+  <div class="download-glow"></div>
   <div class="download-inner reveal">
     <div class="label">04 — GET GHEA</div>
-    <h2>Ready to meet<br><em>GHEA?</em></h2>
+    <div class="download-title"><span>READY TO</span><strong>MEET <em>GHEA?</em></strong></div>
     <p>Download script GHEA dan mulai project kamu.</p>
     <div class="download-actions">
-      <a id="downloadBtn" class="btn light big" target="_blank" rel="noopener">Download GHEA <span>↗</span></a>
-      <a id="developerBtn" class="developer-btn" target="_blank" rel="noopener">Developer <span>↗</span></a>
+      <a id="downloadBtn" class="btn primary big" target="_blank" rel="noopener"><span>Download GHEA</span><b>↗</b></a>
+      <a id="developerBtn" class="developer-btn" target="_blank" rel="noopener"><span>Developer</span><b>↗</b></a>
     </div>
     <small id="filename"></small>
   </div>
@@ -109,10 +157,11 @@ header{position:fixed;z-index:50;top:0;left:0;right:0;height:76px;padding:0 max(
 </main>
 
 <footer>
-  <div><strong>GHEA</strong><span> by AlwaysLennz</span></div>
+  <div class="footer-brand"><span>GHEA</span><b>INFO</b></div>
+  <div class="footer-center">A MODERN WHATSAPP BOT EXPERIENCE</div>
   <p id="copyright"></p>
 </footer>
-<audio id="audio" preload="auto" playsinline><source src="" type="audio/mpeg"></audio>
+<audio id="audio" preload="auto"></audio>
 <script>
 window.GHEA_CONFIG = {
   site: {
@@ -121,11 +170,7 @@ window.GHEA_CONFIG = {
     tagline: "A refined WhatsApp bot experience.",
     description: "GHEA hadir dengan pendekatan yang clean, modern, dan fleksibel — dibuat untuk pengalaman bot yang lebih terstruktur."
   },
-  branding: {
-    heroLogo: "https://cdn.zass.in/EiVlcXdD0v.jpeg",
-    navLogo: "https://cdn.zass.in/QT70bNOasp.jpeg",
-    favicon: "https://cdn.zass.in/0fLF5APbvZ.jpeg"
-  },
+  branding: { text: "GHEA INFO" },
 
   background: {
     imageUrl: "https://cdn.zass.in/idvU2RPnJO.jpeg",
@@ -183,8 +228,8 @@ window.addEventListener("DOMContentLoaded",()=>{
   $("#version").textContent=GHEA_CONFIG.site.version;
   $("#description").textContent=GHEA_CONFIG.site.description;
   $("#copyright").textContent=GHEA_CONFIG.developer.copyright;
-  image("#navLogo",GHEA_CONFIG.branding.navLogo);image("#heroLogo",GHEA_CONFIG.branding.heroLogo);
-  if(GHEA_CONFIG.branding.favicon&&!GHEA_CONFIG.branding.favicon.startsWith("URL_"))$("#favicon").href=GHEA_CONFIG.branding.favicon;
+
+  
   $("#downloadBtn").href=GHEA_CONFIG.download.url;
   $("#filename").textContent=GHEA_CONFIG.download.filename;
   const devUrl=GHEA_CONFIG.developer.url;
@@ -197,28 +242,42 @@ window.addEventListener("DOMContentLoaded",()=>{
     devLink.addEventListener("click",e=>e.preventDefault());
   }
   const audio=$("#audio"),sound=$("#sound");
-  let soundReady=false;
-  async function startGheaSound(){
-    if(!GHEA_CONFIG.audio.enabled||!GHEA_CONFIG.audio.url||GHEA_CONFIG.audio.url.startsWith("URL_")) return;
-    if(!soundReady){
-      audio.src=GHEA_CONFIG.audio.url;
-      audio.volume=Number(GHEA_CONFIG.audio.volume ?? 0.45);
-      audio.load();
-      soundReady=true;
-    }
-    try{ await audio.play(); sound.textContent="◉"; sound.setAttribute("aria-label","Pause sound"); }
-    catch(e){ sound.textContent="○"; }
-  }
   if(GHEA_CONFIG.audio.enabled&&GHEA_CONFIG.audio.url&&!GHEA_CONFIG.audio.url.startsWith("URL_")){
-    sound.style.opacity="1";
-    sound.onclick=async(e)=>{e.preventDefault();if(audio.paused){await startGheaSound()}else{audio.pause();sound.textContent="○";sound.setAttribute("aria-label","Play sound")}};
-    // Mobile browsers block autoplay until a user gesture. Start on the first tap anywhere.
-    const firstGesture=()=>{startGheaSound();document.removeEventListener("pointerdown",firstGesture)};
-    document.addEventListener("pointerdown",firstGesture,{once:true});
-    audio.addEventListener("error",()=>{sound.textContent="!";sound.title="Sound URL tidak dapat diputar oleh browser"});
-  }else{ sound.style.opacity=".35"; sound.title="Sound belum dikonfigurasi"; }
+    audio.src=GHEA_CONFIG.audio.url;audio.volume=GHEA_CONFIG.audio.volume;
+    sound.onclick=async()=>{if(audio.paused){try{await audio.play();sound.textContent="◉"}catch{}}else{audio.pause();sound.textContent="○"}};
+  }else sound.style.opacity=".35";
   $("#menu").onclick=()=>$("#nav").classList.toggle("open");
   document.querySelectorAll("nav a").forEach(a=>a.onclick=()=>$("#nav").classList.remove("open"));
+
+  const cursor=document.querySelector(".cursor-glow");
+  if(cursor){
+    window.addEventListener("pointermove",e=>{cursor.style.left=e.clientX+"px";cursor.style.top=e.clientY+"px"});
+  }
+  const topbar=document.querySelector("#topbar");
+  const onScroll=()=>topbar&&topbar.classList.toggle("scrolled",window.scrollY>25);
+  window.addEventListener("scroll",onScroll,{passive:true}); onScroll();
+
+  const soundBtn=$("#sound");
+  const audio=$("#audio");
+  if(audio && soundBtn){
+    audio.addEventListener("play",()=>soundBtn.classList.add("playing"));
+    audio.addEventListener("pause",()=>soundBtn.classList.remove("playing"));
+    document.addEventListener("pointerdown",async()=>{
+      if(audio.paused && GHEA_CONFIG.audio.enabled && audio.src){
+        try{await audio.play();}catch{}
+      }
+    },{once:true});
+  }
+
+  // Parallax on the garden background for a subtle depth effect.
+  const garden=document.querySelector(".garden-bg");
+  if(garden && !matchMedia("(prefers-reduced-motion: reduce)").matches){
+    window.addEventListener("pointermove",e=>{
+      const x=(e.clientX/innerWidth-.5)*8, y=(e.clientY/innerHeight-.5)*5;
+      garden.style.transform=`scale(1.045) translate(${x}px,${y}px)`;
+    },{passive:true});
+  }
+
   const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add("show")}),{threshold:.12});
   document.querySelectorAll(".reveal").forEach(e=>io.observe(e));
   setTimeout(()=>$("#loader").classList.add("done"),1450);
