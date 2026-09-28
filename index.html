@@ -112,7 +112,7 @@ header{position:fixed;z-index:50;top:0;left:0;right:0;height:76px;padding:0 max(
   <div><strong>GHEA</strong><span> by AlwaysLennz</span></div>
   <p id="copyright"></p>
 </footer>
-<audio id="audio" preload="none"></audio>
+<audio id="audio" preload="auto" playsinline><source src="" type="audio/mpeg"></audio>
 <script>
 window.GHEA_CONFIG = {
   site: {
@@ -183,7 +183,7 @@ window.addEventListener("DOMContentLoaded",()=>{
   $("#version").textContent=GHEA_CONFIG.site.version;
   $("#description").textContent=GHEA_CONFIG.site.description;
   $("#copyright").textContent=GHEA_CONFIG.developer.copyright;
-  image("#navLogo",GHEA_CONFIG.branding.logo);image("#heroLogo",GHEA_CONFIG.branding.logo);
+  image("#navLogo",GHEA_CONFIG.branding.navLogo);image("#heroLogo",GHEA_CONFIG.branding.heroLogo);
   if(GHEA_CONFIG.branding.favicon&&!GHEA_CONFIG.branding.favicon.startsWith("URL_"))$("#favicon").href=GHEA_CONFIG.branding.favicon;
   $("#downloadBtn").href=GHEA_CONFIG.download.url;
   $("#filename").textContent=GHEA_CONFIG.download.filename;
@@ -197,10 +197,26 @@ window.addEventListener("DOMContentLoaded",()=>{
     devLink.addEventListener("click",e=>e.preventDefault());
   }
   const audio=$("#audio"),sound=$("#sound");
+  let soundReady=false;
+  async function startGheaSound(){
+    if(!GHEA_CONFIG.audio.enabled||!GHEA_CONFIG.audio.url||GHEA_CONFIG.audio.url.startsWith("URL_")) return;
+    if(!soundReady){
+      audio.src=GHEA_CONFIG.audio.url;
+      audio.volume=Number(GHEA_CONFIG.audio.volume ?? 0.45);
+      audio.load();
+      soundReady=true;
+    }
+    try{ await audio.play(); sound.textContent="◉"; sound.setAttribute("aria-label","Pause sound"); }
+    catch(e){ sound.textContent="○"; }
+  }
   if(GHEA_CONFIG.audio.enabled&&GHEA_CONFIG.audio.url&&!GHEA_CONFIG.audio.url.startsWith("URL_")){
-    audio.src=GHEA_CONFIG.audio.url;audio.volume=GHEA_CONFIG.audio.volume;
-    sound.onclick=async()=>{if(audio.paused){try{await audio.play();sound.textContent="◉"}catch{}}else{audio.pause();sound.textContent="○"}};
-  }else sound.style.opacity=".35";
+    sound.style.opacity="1";
+    sound.onclick=async(e)=>{e.preventDefault();if(audio.paused){await startGheaSound()}else{audio.pause();sound.textContent="○";sound.setAttribute("aria-label","Play sound")}};
+    // Mobile browsers block autoplay until a user gesture. Start on the first tap anywhere.
+    const firstGesture=()=>{startGheaSound();document.removeEventListener("pointerdown",firstGesture)};
+    document.addEventListener("pointerdown",firstGesture,{once:true});
+    audio.addEventListener("error",()=>{sound.textContent="!";sound.title="Sound URL tidak dapat diputar oleh browser"});
+  }else{ sound.style.opacity=".35"; sound.title="Sound belum dikonfigurasi"; }
   $("#menu").onclick=()=>$("#nav").classList.toggle("open");
   document.querySelectorAll("nav a").forEach(a=>a.onclick=()=>$("#nav").classList.remove("open"));
   const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add("show")}),{threshold:.12});
