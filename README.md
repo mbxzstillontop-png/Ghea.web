@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://cdn.zass.in/4zxjnFkfPD.jpeghttps://cdn.zass.in/4zxjnFkfPD.jpeg" width="180" alt="GHEA BOT Logo">
+<img src="https://cdn.zass.in/4zxjnFkfPD.jpeg" width="180" alt="GHEA BOT Logo">
 
 # 𝙂𝙃𝙀𝘼 𝘽𝙊𝙏
 
